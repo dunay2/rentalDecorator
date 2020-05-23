@@ -23,39 +23,25 @@ public abstract class Rental  {
 
         long diffInMillies = Math.abs(endDate.getTime() - startDate.getTime());
         int diff =(int) TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
-
         int noOfferPrice= (this.car.getModelPricePerDay() *(diff+2));
 
-        return (int )calculateOffers  (noOfferPrice);
+        return (int )calculatePriceWithOffers  (noOfferPrice);
     }
 
-    private double calculateOffers (int  totalValue)
+    private double calculatePriceWithOffers (int  totalValue)
     {
         AbstractPrice abstractPrice= new ConcretPrice() ;
         abstractPrice.setValue(totalValue);
 
         for (Offer offer:ofertas
         ) {
-            //poner una factoria
-            DiscountDecorator ofertaAux = getDiscountDecoratorFactory(abstractPrice, offer);
+            DiscountDecorator ofertaAux = DiscountFactory.getDiscountDecorator(abstractPrice, offer);
             ofertaAux.setValue (offer.getValor());
             abstractPrice= ofertaAux;
         }
         return (abstractPrice.getPrice() -abstractPrice.getDiscount());
     }
 
-    private DiscountDecorator getDiscountDecoratorFactory(AbstractPrice abstractPrice, Offer localOferta) {
-        DiscountDecorator ofertaAux;
-        if (localOferta.getTipo().equals("Descuento"))
-        {
-            ofertaAux = new DiscountOffer(abstractPrice);
-        }
-        else
-        {
-            ofertaAux = new MoneyOffer(abstractPrice);
-        }
-        return ofertaAux;
-    }
 
     public Rental() {
     }
@@ -64,27 +50,9 @@ public abstract class Rental  {
 
         identifier=dni+startDate;
         this.startDate=startDate;
-        ofertas=getOfertas();
-
+        ofertas=Offer.getOfertas();
     }
 
-    private List getOfertas()
-    {
-
-        Offer oferta= new Offer("Descuento", 10);
-        Offer oferta2= new Offer("Descuento", 3);
-        Offer oferta3= new Offer("Descuento", 4);
-        Offer oferta4= new Offer("Dinero", 10);
-        Offer oferta5= new Offer("Dinero", 17);
-
-        ofertas.add(oferta);
-       //  ofertas.add(oferta2);
-       //ofertas.add(oferta3);
-       //  ofertas.add(oferta4);
-      ofertas.add(oferta5);
-
-         return ofertas;
-    }
 
     public Car getCar() {
         return car;
