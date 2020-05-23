@@ -1,4 +1,6 @@
-package decorator;
+package system.decorator;
+
+import system.dto.Offer;
 
 public class DiscountFactory {
 

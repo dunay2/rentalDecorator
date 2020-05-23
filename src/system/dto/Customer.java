@@ -1,9 +1,9 @@
-package decorator;
+package system.dto;
 
-import com.company2.services.CalculateNumberOfRentalsDO;
+import system.dto.rental.Rental;
+import system.strategy.CalculateNumberOfRentalsDO;
 
 import java.util.ArrayList;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 public class Customer { private String dni;
 private String name;

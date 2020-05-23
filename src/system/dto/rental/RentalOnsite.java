@@ -1,6 +1,6 @@
-package decorator;
+package system.dto.rental;
 
-import com.company2.dto.rental.Rental;
+
 
 import java.util.Date;
 
@@ -13,4 +13,6 @@ public class RentalOnsite extends Rental {
     public void setEndDate(Date endDate) {
         this.endDate=endDate;
     }
+
+
 }

@@ -1,4 +1,4 @@
-package decorator;
+package system.decorator;
 
 public abstract class AbstractPrice {
     String description = "Cosa base";

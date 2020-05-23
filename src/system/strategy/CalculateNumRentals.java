@@ -1,7 +1,8 @@
-package decorator;
+package system.strategy;
 
-import com.company2.services.CalculateNumberOfRentalsDO;
 
+import system.dto.rental.Rental;
+import system.dto.rental.WebRental;
 
 import java.util.List;
 

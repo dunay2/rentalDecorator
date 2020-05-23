@@ -1,6 +1,4 @@
-package decorator;
-
-import com.company2.dto.RentalOffice;
+package system.dto.rental;
 
 
 import java.util.Date;
@@ -37,17 +35,13 @@ public class WebRental  extends Rental {
     }
 
     public void setDeliveryTime(int deliveryTime) {
-
             this.deliveryTime=deliveryTime;
-
     }
 
-
     @Override
-    public Integer getPrice()
+    public double getPrice()
     {
     return  super.getPrice()+this.deliveryOffice.getFeeForDelivery();
     }
-
 
 }

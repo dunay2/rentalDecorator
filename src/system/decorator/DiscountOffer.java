@@ -1,4 +1,4 @@
-package decorator;
+package system.decorator;
 
 public class DiscountOffer extends DiscountDecorator {
 
