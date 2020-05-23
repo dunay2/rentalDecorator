@@ -1,0 +1,65 @@
+@startuml
+" " -> CreateRentalControler: 1: RentalFactory(dni,iDate,oDate,rentalType,lPlate, delOffice)
+CreateRentalControler --> "Rental:RentalFactory": 2: (rentalType, dni, iDate);
+
+alt
+"Rental:RentalFactory" --> "Rental": 2: (dni, iDate);
+end
+
+'Rental rental = RentalFactory.getRentalByTpe(rentalType, dni, iDate);
+
+ '       Car car = cars.get(lPlate);
+
+  '      Customer customer= customers.get(dni);
+   '     RentalOffice rentalOffice=car.getRentalOffice();
+
+    '    if (!rentalOffice.getAddress().equals(delOffice.getAddress())) {
+     '       oDate.setHours(13);
+      '  }
+
+       ' rental.setEndDate(oDate);
+       ' rental.setCar(car);
+       ' rental.setCustomer(customer);
+       ' rental.setPickupOffice(rentalOffice);
+       ' rental.setDeliveryOffice(delOffice);
+
+        'return rental;
+
+
+activate RentalOffice
+note right
+created composite key
+at constructor
+end note
+
+"rental:Rental" --> "cus:DicCustomer": 3. c:get(dni)
+
+
+alt !address.equals(delOffice.getAddress())
+
+'if (!address.equals(delOffice.getAddress())) {
+ '           ;
+  '      }
+"RentalOffice" -->"RentalOffice":oDate=(13:00)
+
+end
+
+
+
+
+RentalOffice --> "rental:Rental": 4: setEndDate(oDate)
+
+RentalOffice ->RentalOffice : 6. car:getCar (lPlate)
+
+RentalOffice -> "rental:Rental": 7: setCar(car)
+
+RentalOffice ->RentalOffice : 7. addRental (car,iDate,oDate)
+note right
+added rental &
+assignament
+end note
+
+deactivate RentalOffice
+
+
+@enduml

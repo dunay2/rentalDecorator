@@ -1,0 +1,47 @@
+@startuml
+
+
+class Car
+{
+-model
+getModelPricePerDay():Integer
+}
+
+
+abstract class Rental
+{
+- Car car
+--
++ getPrice():Integer
+}
+
+class Model
+{
++getPricePerDay():Integer
+}
+
+class WebRental extends Rental
+WebRental "*" -  "    1" RentalOffice:" deliveryOffice "
+Car "1" -- "*" Rental
+Car "1"-- "1" Model
+Car "*" - "1" RentalOffice : isAssignedTo
+
+class WebRental
+{
++ deliveryOffice:RentalOffice
++getPrice():Integer
+}
+
+class Car
+
+class RentalOffice
+{
++getFeeForDelivery():Integer
+}
+
+class Model
+
+
+
+
+@enduml

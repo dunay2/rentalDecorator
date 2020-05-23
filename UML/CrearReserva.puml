@@ -1,0 +1,89 @@
+@startuml
+
+
+package "Dominio" #DDDDDD {
+
+
+
+enum RentalType{
+WEB
+ONSITE
+}
+
+Interface Dictionary<T>
+{
++list():Iterator<T>
++query(id: String):T
++register(id: String,object T):T
+}
+
+Class Rental
+{
++CreateRental (r:Rental)
+}
+
+class UpdateRental
+{
++getRental(dni:String, startDate :Date)
++setDeliveryTime(date:Date)
+}
+class CreateRental
+{
++setRentalType(rentalType Enum)
++setCustomer(dni : String)
++setCar(licesePlate : String)
++setInDate(date: Date)
++setOutDate(date: Date)
++setPickUpRentalOffice(Address: String)
++setDeliveryRentalOffice(Address: String)
++createRental()
+
+}
+
+
+CreateRental "1"-"1" RentalFactory
+CreateRental "1"-"1" Rental
+UpdateRental "1"-"1" Rental
+UpdateRental "*"->"1" Rentals
+CreateRental "*"--->"1" Cars
+CreateRental "*"--->"1" Customers
+CreateRental "*"--->"1" RentalOffices
+CreateRental "*"--->"1" Rentals
+
+
+
+
+Class Customers implements Dictionary
+{
++getCustomer(dni:String):Customer
+}
+
+Class Cars implements Dictionary
+{
+ +getCar(licensePlate:String):car
+}
+
+Class Rentals implements Dictionary
+{
++createRental(r: Rental)
++updateDeliveryTime(date:Date)
+}
+
+Class RentalOffices implements Dictionary
+{
++getRentalOffice (address: String) RentalOffice
+}
+
+Class RentalFactory
+{
+-rental: Rental
+--
++getRentalByType(rentalType:Enum):Rental
+
+}
+
+
+}
+
+
+@enduml

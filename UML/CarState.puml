@@ -1,0 +1,40 @@
+@startuml
+
+class Car
+{
++takeOutOfService(backToService:date) ​
++setSustitute(backToService:date) ​
+}
+
+Abstract class Estado
+{
++takeOutOfService(backToService:date) ​
++setSustitute(backToService:date) ​
+}
+
+class EstadoActivo
+{
++takeOutOfService(backToService:date)
++setSustitute(backToService:date) ​
+}
+Class EstadoFueraDeServicio
+{
++takeOutOfService(backToService:date)
++setSustitute(backToService:date) ​
+}
+Class EstadoSustituto
+{
++takeOutOfService(backToService:date)
++setSustitute(backToService:date) ​
+}
+
+
+Car - "1"  Estado
+
+class EstadoActivo extends Estado
+class EstadoFueraDeServicio extends Estado
+class EstadoSustituto extends Estado
+
+
+
+@enduml

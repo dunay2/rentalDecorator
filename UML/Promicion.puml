@@ -1,0 +1,39 @@
+@startuml
+
+abstract class AlquilerAbstracto
+{
+ description :String
+
++getDescription()
+ {abstract}GetAmount(): Integer
+ {abstract}GetDiscountType() Integer
+
+}
+
+class AlquilerConcreto extends AlquilerAbstracto
+{
++GetAmount(): Integer
++GetDiscountType() Integer
+
+}
+
+abstract class PromocionAbstracta extends AlquilerAbstracto
+ {
+ - AlquilerAbstracto alquilerAbstracto
+ {abstract}+getDescription()
++ GetAmount(): Integer
++ GetDiscountType() Integer
+}
+
+ class PromocionConcreta extends PromocionAbstracta
+ {
+ - AlquilerAbstracto alquilerAbstracto
+
+
+ }
+
+
+
+
+
+@enduml

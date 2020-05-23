@@ -1,0 +1,26 @@
+@startuml
+
+
+class Customer
+{
++numberOfRentalsWithDifferentOffices(CalculateNumberOfRentalsDO ca):Integer
+}
+
+Abstract class Rental
+interface CalculateNumberOfRentalsDO
+{
++calculate(rentals:Rental[]):Integer
+}
+Customer ..>  CalculateNumberOfRentalsDO
+Customer "1"- "*" Rental:" makes  "
+
+CalculateNumberOfRentalsDO <|..   ImplCalculate
+
+class ImplCalculate
+{
++calculate(rentals:Rental[]):Integer
+}
+
+
+
+@enduml
