@@ -1,3 +1,3 @@
 # rentalDecorator
 
-Patterns: rentalDecorator, strategy, factory
+Sample patterns: rentalDecorator, strategy, factory
